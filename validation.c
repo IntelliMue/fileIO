@@ -76,7 +76,7 @@ int main (int argc, char **argv) {
     // Test directory functions
     printf(border, dirName);
 
-    dirStatus = mkdir(dirName, S_IRWXU);
+    dirStatus = mkdir(dirName);
     if(dirStatus) {
         fprintf(stderr, "\nFailed to create %s directory\n\n", dirName);
             return(result = -1);

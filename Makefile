@@ -6,6 +6,8 @@ FILES = fileTest.txt
 
 DIRS = dirTest
 
+CC = gcc
+
 all: $(BINS)
 
 fileIO.exe: validation.o
