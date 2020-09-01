@@ -91,7 +91,10 @@ int main (int argc, char **argv) {
     if(isDir(dirName)) {
         printf("%s is a directory\n", dirName);
     }
-    isReadable(dirName);
+    
+    if(isReadable(dirName)) {
+        printf("%s is readable\n", dirName);
+    }
 
     fileExecs(dirName);
 
