@@ -1,6 +1,12 @@
 CPPFLAGS += -Wall -Wextra -Wpedantic
 
-BINS = fileIO.exe
+CFLAGS += -std=c11
+
+ARFLAGS += -U
+
+BINS = fileIOTest
+
+LIBS = fileIO.a
 
 FILES = fileTest.txt
 
@@ -10,8 +16,13 @@ CC = gcc
 
 all: $(BINS)
 
-fileIO.exe: validation.o
-	gcc validation.o -o fileIO.exe
+lib: $(LIBS)
+
+fileIOTest: SRC/fileIOTest.o fileIO.a
+	gcc SRC/fileIOTest.o fileIO.a -o fileIOTest
+	$(RM) SRC/fileIOTest.o
+
+fileIO.a: fileIO.a(SRC/fileIO.o)
 
 debug: CFLAGS += -g
 debug: all
@@ -23,4 +34,4 @@ profile: all
 
 clean:
 	$(RM) *.o *.a $(BINS) $(FILES)
-	rm -rf $(DIRS)
+	$(RM) -rf $(DIRS)
